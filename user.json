@@ -1,0 +1,17 @@
+[
+  {
+    "name": "test",
+    "email": "test@gmal.com",
+    "password": "test123"
+  },
+  {
+    "name": "ptb",
+    "email": "ptb@gmail.com",
+    "password": "$2b$13$kK2ir/5OKfvqln7yZ.vWveRrx2zLE2f8C8vgevcP2/Ibi2AoeX8.S"
+  },
+  {
+    "name": "ptb",
+    "email": "peter@gmail.com",
+    "password": "$2b$13$ppR4HZ9V7TQ11HNgAI5/WOBXvUFF84VePRMAlugCji0sTMSvqOVGm"
+  }
+]
