@@ -18,5 +18,15 @@
     "name": "John",
     "email": "john@gmail.com",
     "password": "$2b$13$WtynxP38/NeR/CIGgoqZoug8n2VaZfwRuQvaYfYK9VTKUOwiEh2.i"
+  },
+  {
+    "name": "Joy",
+    "email": "joy@gmail.com",
+    "password": "$2b$13$M5rvBYMFv.IMH1.hovtjVe9ONLzOBoiiHdIYXOT2Nf0jxLMJ6qWTi"
+  },
+  {
+    "name": "job",
+    "email": "job@gmail.com",
+    "password": "$2b$13$Rt1N2eXcFuCanUFIR55P9OUkSqX0XOX7ICas9NpnRd4q37mei.qb6"
   }
 ]

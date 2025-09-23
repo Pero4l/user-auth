@@ -9,7 +9,9 @@ async function register(req, res) {
     if (!name || !email || !password) {
         return res.status(400).json({message: "All fields are required"});
 
-    } else if (password.length < 6 && !/[A-Z]/.test(name) && !/[a-z]/.test(name)) {
+    }
+    
+    if (password.length < 6 && !/[A-Z]/.test(name) && !/[a-z]/.test(name)) {
         return res.status(400).json({message: "Password must be at least 6 characters and contain both uppercase and lowercase letters"});
 
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
