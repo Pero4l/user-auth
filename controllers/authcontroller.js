@@ -6,20 +6,26 @@ const bcrypt = require('bcrypt')
 async function register(req, res) {
     const {name, email, password} = req.body;
 
+      
     if (!name || !email || !password) {
         return res.status(400).json({message: "All fields are required"});
-
     }
     
-    if (password.length < 6 && !/[A-Z]/.test(name) && !/[a-z]/.test(name)) {
-        return res.status(400).json({message: "Password must be at least 6 characters and contain both uppercase and lowercase letters"});
-
+    if (
+        password.length < 6 ||
+        !/[A-Z]/.test(password) ||
+        !/[a-z]/.test(password)
+    ) {
+        return res.status(400).json({
+            message: "Password must be at least 6 characters and contain both uppercase and lowercase letters"
+        });
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).json({message: "Invalid email format"});
     } else if (name.length < 3) {
         return res.status(400).json({message: "Name must be at least 3 characters"});
-
-    } else{
+    }
+    
+     else{
 
     const hashPassword = await bcrypt.hash(password, 13);
 
