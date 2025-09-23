@@ -1,3 +1,7 @@
 [
- 
+  {
+    "name": "John doe",
+    "email": "john@gmail.com",
+    "password": "$2b$13$CbTs1ZLFqWb5rqDDuC/1b.fwtswzD78GFDiEYGQKUconn22jWk9Aq"
+  }
 ]
