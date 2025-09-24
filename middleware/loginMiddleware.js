@@ -1,4 +1,5 @@
 const {readFile} = require('../utils/file-check');
+const bcrypt = require('bcrypt')
 
 async function loginMiddleware(req, res, next) {
 
@@ -6,20 +7,21 @@ async function loginMiddleware(req, res, next) {
 
     const user = readFile();
 
-    const userExists = user.find((user) => user.email === email);
+    const userExist = user.find((user) => user.email === email);
 
-    const isMatch = await bcrypt.compare(password, userExists.password)
+    const isMatch = await bcrypt.compare(password, userExist.password)
 
-    if(!userExists && isMatch ){
+    if(!userExist && isMatch ){
 
-         res.status(400).json({
+         res.status(401).json({
             success: false,
-            message: "Login Invalid"
+            message: "Invalid credentials"
         });
         
     }
 
         req.user = isMatch
+
         next() 
     
     

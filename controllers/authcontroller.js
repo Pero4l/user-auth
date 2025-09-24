@@ -58,19 +58,29 @@ async function register(req, res){
 
 async function login(req, res){
 
-    const user = isMatch;
-
-    if(user){
+    if(req.user){
           res.status(200).json({
         success: true,
         message: "Login Successfully"
     })
     }
 
-  
-    
 
 }
+
+// async function login(req, res){
+//     if (req.user) {
+//         res.status(200).json({
+//             success: true,
+//             message: "Login Successfully"
+//         });
+//     } else {
+//         res.status(401).json({
+//             success: false,
+//             message: "Invalid credentials"
+//         });
+//     }
+// }
 
 module.exports ={
     register,
