@@ -13,5 +13,10 @@
     "name": "PTB",
     "email": "ptb@gmail.com",
     "password": "$2b$13$eRE7ClmFl4GusZ5dODYRKeSMLHfrT52toRWufKV7enyiUIfay9NYK"
+  },
+  {
+    "name": "Joy",
+    "email": "joy@gmail.com",
+    "password": "$2b$13$yBbDzD0OfCNbrKS0kdSNQuc15fdjeeXXSfar2mT6PR7wdEjsviI8K"
   }
 ]

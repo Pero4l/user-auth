@@ -52,7 +52,7 @@ async function register(req, res) {
 
 
 
-async function login(req, res) {
+async function checkLogin(req, res, next) {
 
     const {email, password} = req.body;
 
@@ -62,24 +62,22 @@ async function login(req, res) {
 
     const isMatch = await bcrypt.compare(password, userExists.password)
 
-    if(userExists && isMatch ){
-        
-        res.status(200).json({
-            success: true,
-            message: "Login Successfully"
-        });
+    if(!userExists && isMatch ){
 
-    } else{
-
-          res.status(400).json({
+         res.status(400).json({
             success: false,
             message: "Login Invalid"
         });
+        
     }
+
+        req.user = userExists
+        next() 
+    
     
 }
 
 
 module.exports = {
-    register, login
+    register, checkLogin
 }
