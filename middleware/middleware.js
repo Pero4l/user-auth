@@ -3,7 +3,7 @@ const {writeFile, checkFile} = require('../controllers/file-check');
 const bcrypt = require('bcrypt')
 
 
-async function register(req, res) {
+async function registerCheck(req, res, next) {
     const {name, email, password} = req.body;
 
       
@@ -36,15 +36,18 @@ async function register(req, res) {
 
     const userExists = user.find((user) => user.email === email);
 
-    if (userExists) {
-        return res.status(409).json({message: "User already exists"});
+    if (!userExists) {
+        return res.status(409).json({
+            message: "User already exists"
+        });
     }
 
     user.push({name, email, password: hashPassword});
 
-    writeFile(user);
+    req.user = user
 
-    return res.status(201).json({message: "User registered successfully"});
+    next()
+
     }
 
     
@@ -79,5 +82,5 @@ async function checkLogin(req, res, next) {
 
 
 module.exports = {
-    register, checkLogin
+    registerCheck, checkLogin
 }
