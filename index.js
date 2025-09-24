@@ -4,6 +4,7 @@ const app = express();
 
 const authRouter = require("./router/auth.route")
 
+
 app.use(express.json());
 
 const PORT = 3000;

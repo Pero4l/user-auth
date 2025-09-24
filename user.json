@@ -8,5 +8,10 @@
     "name": "Test",
     "email": "test@gmail.com",
     "password": "$2b$13$0fQ5BFgRpKTxN/DAgwAIhutLjoq0V4mzgsQaGnGZ/agxVLpd0HP8G"
+  },
+  {
+    "name": "PTB",
+    "email": "ptb@gmail.com",
+    "password": "$2b$13$eRE7ClmFl4GusZ5dODYRKeSMLHfrT52toRWufKV7enyiUIfay9NYK"
   }
 ]
