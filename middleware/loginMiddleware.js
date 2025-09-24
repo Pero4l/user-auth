@@ -1,9 +1,4 @@
-const {readFile} = require('../controllers/file-check');
-
-
-
-
-
+const {readFile} = require('../utils/file-check');
 
 async function loginMiddleware(req, res, next) {
 

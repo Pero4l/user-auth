@@ -58,7 +58,7 @@ async function register(req, res){
 
 async function login(req, res){
 
-    const user = req.user;
+    const user = isMatch;
 
     if(user){
           res.status(200).json({
