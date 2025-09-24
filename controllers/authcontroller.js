@@ -36,11 +36,16 @@ async function register(req, res){
     const id = users.length + 1;
     const date = new Date().toLocaleString();
 
-    const newUser = {id, name, email, role, password, date}
+    const newUser = {id, name, email, role, password: hashedPassword, date}
 
     users.push(newUser)
 
     writeFile(users)
+
+    console.log(newUser.id);
+    console.log(users);
+    
+    
 
     res.status(201).json({ 
         "success" : true,

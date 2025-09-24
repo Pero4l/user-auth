@@ -1,6 +1,34 @@
-{
-  "name": "Joy",
-  "email": "joy@gmail.com",
-  "role": "user",
-  "password": "$2b$13$ASdKZEUYMUu1yPYKqx6l8OOb.5Hh.5b63itF2DIjuqboJLz7XrAtC"
-}
+[
+  {
+    "id": 1,
+    "name": "Joy",
+    "email": "joy@gmail.com",
+    "role": "user",
+    "password": "Joy123",
+    "date": "9/24/2025, 11:42:05 PM"
+  },
+  {
+    "id": 2,
+    "name": "Ptb",
+    "email": "ptb@gmail.com",
+    "role": "Admin",
+    "password": "Ptb123",
+    "date": "9/24/2025, 11:48:34 PM"
+  },
+  {
+    "id": 3,
+    "name": "Peter",
+    "email": "peter@gmail.com",
+    "role": "Admin",
+    "password": "Peter123",
+    "date": "9/24/2025, 11:54:47 PM"
+  },
+  {
+    "id": 4,
+    "name": "kee",
+    "email": "k@gmail.com",
+    "role": "user",
+    "password": "Kee123",
+    "date": "9/24/2025, 11:57:48 PM"
+  }
+]
