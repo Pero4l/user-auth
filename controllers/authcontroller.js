@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt')
 async function register(req, res){
         const {name, email, role, password} = req.body;
 
+        let users = readFile();
+
       
     if (!name || !email, !role || !password) {
         return res.status(400).json({message: "All fields are required"});
@@ -21,23 +23,29 @@ async function register(req, res){
         return res.status(400).json({message: "Name must be at least 3 characters"});
     }
     
-    const users = readFile()
+    if(users.find((u) => u.name === name && u.email === email)){
+        return res.status(400).json({
+            "success": false,
+            "message": "User already exists"
+        })
+    }
+   
 
     const hashedPassword = await bcrypt.hash(password, 13)
+    
+    const id = users.length + 1;
+    const date = new Date().toLocaleString();
 
-   const newUser = {
-        name,
-        email,
-        role,
-        password: hashedPassword
-    }
-        
+    const newUser = {id, name, email, role, password, date}
 
     users.push(newUser)
 
     writeFile(users)
 
-    res.status(201).json({ message: "User registered successfully" });
+    res.status(201).json({ 
+        "success" : true,
+        "message": "User registered successfully" 
+    });
 
 
     }

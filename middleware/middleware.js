@@ -1,30 +1,6 @@
 const {readFile} = require('../controllers/file-check');
 
 
-async function registerCheck(req, res, next) {
-    
-    
-
-    let users = readFile();
-    if (!Array.isArray(users)) {
-        users = [];
-    }
-
-
-    let userExists = users.find((user) => user.email === email);
-
-
-
-    const user = {
-        name, email, role, password
-    }
-
-    req.user = user
-    req.check = userExists
-    next();
-    
-}
-
 
 
 
