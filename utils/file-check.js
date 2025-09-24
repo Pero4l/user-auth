@@ -1,5 +1,5 @@
 const fs = require('fs');
-const filePath = "../user.json"
+const filePath = "./user.json"
 
 
 function readFile(){ 

@@ -1,34 +1,10 @@
 [
   {
     "id": 1,
-    "name": "Joy",
-    "email": "joy@gmail.com",
+    "name": "Promise",
+    "email": "promise@gmail.com",
     "role": "user",
-    "password": "Joy123",
-    "date": "9/24/2025, 11:42:05 PM"
-  },
-  {
-    "id": 2,
-    "name": "Ptb",
-    "email": "ptb@gmail.com",
-    "role": "Admin",
-    "password": "Ptb123",
-    "date": "9/24/2025, 11:48:34 PM"
-  },
-  {
-    "id": 3,
-    "name": "Peter",
-    "email": "peter@gmail.com",
-    "role": "Admin",
-    "password": "Peter123",
-    "date": "9/24/2025, 11:54:47 PM"
-  },
-  {
-    "id": 4,
-    "name": "kee",
-    "email": "k@gmail.com",
-    "role": "user",
-    "password": "Kee123",
-    "date": "9/24/2025, 11:57:48 PM"
+    "password": "$2b$13$0nsvg.i7X8luJbwfjGnihexIZc2IILEPxu.SQK249Xwrlpnn2K/vC",
+    "date": "9/25/2025, 12:07:37 AM"
   }
 ]
