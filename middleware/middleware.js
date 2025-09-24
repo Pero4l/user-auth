@@ -2,22 +2,7 @@ const {readFile} = require('../controllers/file-check');
 
 
 async function registerCheck(req, res, next) {
-    const {name, email, role, password} = req.body;
-
-      
-    if (!name || !email, !role || !password) {
-        return res.status(400).json({message: "All fields are required"});
-    }
     
-    if (password.length < 6 || !/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
-        return res.status(400).json({
-            message: "Password must be at least 6 characters and contain both uppercase and lowercase letters"
-        });
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        return res.status(400).json({message: "Invalid email format"});
-    } else if (name.length < 3) {
-        return res.status(400).json({message: "Name must be at least 3 characters"});
-    }
     
 
     let users = readFile();

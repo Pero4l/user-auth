@@ -1,52 +1,51 @@
-let {writeFile, readFile} = require('../controllers/file-check');
+let {writeFile, readFile} = require('../utils/file-check');
 const bcrypt = require('bcrypt')
 
+
+
 async function register(req, res){
+        const {name, email, role, password} = req.body;
 
-    const user = req.user
-    const check = req.check
+      
+    if (!name || !email, !role || !password) {
+        return res.status(400).json({message: "All fields are required"});
+    }
+    
+    if (password.length < 6 || !/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
+        return res.status(400).json({
+            message: "Password must be at least 6 characters and contain both uppercase and lowercase letters"
+        });
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return res.status(400).json({message: "Invalid email format"});
+    } else if (name.length < 3) {
+        return res.status(400).json({message: "Name must be at least 3 characters"});
+    }
+    
+    const users = readFile()
 
-    if(!check){
+    const hashedPassword = await bcrypt.hash(password, 13)
 
-          const hashPassword = await bcrypt.hash(user.password, 13);
-
-        console.log(hashPassword);
-
-        const users = readFile()
-
+   const newUser = {
+        name,
+        email,
+        role,
+        password: hashedPassword
+    }
         
-        const newUser = {
-            name: user.name,
-            email: user.email,
-            role: user.role,
-            password: hashPassword
 
-        }
+    users.push(newUser)
 
-        users.push(newUser)
-        
+    writeFile(users)
 
-     writeFile(users)
+    res.status(201).json({ message: "User registered successfully" });
 
-     res.status(201).json({
-        success: true,
-        message: "User registered successfully"
-    })
 
-    } else{
-        
-          return res.status(409).json({
-            message: "User already exists"
-        })
     }
 
-   
-    
-}
 
 
 
-function login(req, res){
+async function login(req, res){
 
     const user = req.user;
 
