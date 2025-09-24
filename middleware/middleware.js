@@ -1,6 +1,4 @@
-const {writeFile, checkFile} = require('../controllers/file-check');
-
-const bcrypt = require('bcrypt')
+const {checkFile} = require('../controllers/file-check');
 
 
 async function registerCheck(req, res, next) {
@@ -25,33 +23,25 @@ async function registerCheck(req, res, next) {
         return res.status(400).json({message: "Name must be at least 3 characters"});
     }
     
-     else{
 
-    const hashPassword = await bcrypt.hash(password, 13);
+    let users = checkFile();
+    if (!Array.isArray(users)) {
+        users = [];
+    }
 
-        console.log(hashPassword);
-        
+    let userExists = users.find((user) => user.email === email);
 
-    const user = checkFile();
-
-    const userExists = user.find((user) => user.email === email);
-
-    if (!userExists) {
+    if (userExists) {
         return res.status(409).json({
             message: "User already exists"
         });
     }
 
-    user.push({name, email, password: hashPassword});
-
-    req.user = user
-
-    next()
-
-    }
-
+    next();
     
 }
+
+
 
 
 

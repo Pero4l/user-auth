@@ -1,14 +1,20 @@
-const {writeFile} = require('../controllers/file-check');
+let {writeFile} = require('../controllers/file-check');
+const bcrypt = require('bcrypt')
 
-function register(req, res){
-    const user = req.user;
+async function register(req, res){
+    const {name, email, password} = req.body
 
-    if(user){
-         writeFile(user);
-        return res.status(201).json({
-            message: "User registered successfully"
-        });
-    }
+     const hashPassword = await bcrypt.hash(password, 13);
+
+        console.log(hashPassword);
+
+     writeFile({name, email, password: hashPassword})
+
+     res.status(201).json({
+        success: true,
+        message: "User registered successfully"
+    })
+    
 }
 
 
