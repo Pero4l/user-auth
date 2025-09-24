@@ -5,7 +5,7 @@ const {readFile} = require('../controllers/file-check');
 
 
 
-async function checkLogin(req, res, next) {
+async function loginMiddleware(req, res, next) {
 
     const {email, password} = req.body;
 
@@ -24,7 +24,7 @@ async function checkLogin(req, res, next) {
         
     }
 
-        req.user = userExists
+        req.user = isMatch
         next() 
     
     
@@ -32,5 +32,5 @@ async function checkLogin(req, res, next) {
 
 
 module.exports = {
-    registerCheck, checkLogin
+    loginMiddleware
 }
