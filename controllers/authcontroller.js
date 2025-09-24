@@ -1,19 +1,46 @@
-let {writeFile} = require('../controllers/file-check');
+let {writeFile, readFile} = require('../controllers/file-check');
 const bcrypt = require('bcrypt')
 
 async function register(req, res){
-    const {name, email, password} = req.body
 
-     const hashPassword = await bcrypt.hash(password, 13);
+    const user = req.user
+    const check = req.check
+
+    if(!check){
+
+          const hashPassword = await bcrypt.hash(user.password, 13);
 
         console.log(hashPassword);
 
-     writeFile({name, email, password: hashPassword})
+        const users = readFile()
+
+        
+        const newUser = {
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            password: hashPassword
+
+        }
+
+        users.push(newUser)
+        
+
+     writeFile(users)
 
      res.status(201).json({
         success: true,
         message: "User registered successfully"
     })
+
+    } else{
+        
+          return res.status(409).json({
+            message: "User already exists"
+        })
+    }
+
+   
     
 }
 

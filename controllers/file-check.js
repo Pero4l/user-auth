@@ -1,12 +1,22 @@
 const fs = require('fs');
+const path = require('path');
+const filePath = path.join(__dirname, "../user.json")
 
-const filePath = './user.json';
-
-function checkFile(){
+function readFile(){
+    let users = {}
+    let data;
     try{
         if(!fs.existsSync(filePath)) return [];
+        try{
         const data = fs.readFileSync(filePath, 'utf-8');
-        return JSON.parse(data);
+        if(data){
+        return users = JSON.parse(data);
+        }
+        } catch (err){
+            console.log("Error reading file:", err);
+            
+        }
+        
     } catch (err) {
         console.log("Error reading file:", err);
         return [];
@@ -23,4 +33,4 @@ function writeFile(users){
 }
 
 
-module.exports = { checkFile, writeFile };
+module.exports = { readFile, writeFile };

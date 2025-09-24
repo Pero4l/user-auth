@@ -1,5 +1,6 @@
 {
   "name": "Joy",
   "email": "joy@gmail.com",
-  "password": "$2b$13$Ba1keMbU0mQoHZ4P7igxSuuc55iAG8WJzApo1j5OU5N/EWrRY0DDe"
+  "role": "user",
+  "password": "$2b$13$ASdKZEUYMUu1yPYKqx6l8OOb.5Hh.5b63itF2DIjuqboJLz7XrAtC"
 }

@@ -1,19 +1,15 @@
-const {checkFile} = require('../controllers/file-check');
+const {readFile} = require('../controllers/file-check');
 
 
 async function registerCheck(req, res, next) {
-    const {name, email, password} = req.body;
+    const {name, email, role, password} = req.body;
 
       
-    if (!name || !email || !password) {
+    if (!name || !email, !role || !password) {
         return res.status(400).json({message: "All fields are required"});
     }
     
-    if (
-        password.length < 6 ||
-        !/[A-Z]/.test(password) ||
-        !/[a-z]/.test(password)
-    ) {
+    if (password.length < 6 || !/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
         return res.status(400).json({
             message: "Password must be at least 6 characters and contain both uppercase and lowercase letters"
         });
@@ -24,19 +20,22 @@ async function registerCheck(req, res, next) {
     }
     
 
-    let users = checkFile();
+    let users = readFile();
     if (!Array.isArray(users)) {
         users = [];
     }
 
+
     let userExists = users.find((user) => user.email === email);
 
-    if (userExists) {
-        return res.status(409).json({
-            message: "User already exists"
-        });
+
+
+    const user = {
+        name, email, role, password
     }
 
+    req.user = user
+    req.check = userExists
     next();
     
 }
@@ -49,7 +48,7 @@ async function checkLogin(req, res, next) {
 
     const {email, password} = req.body;
 
-    const user = checkFile();
+    const user = readFile();
 
     const userExists = user.find((user) => user.email === email);
 
