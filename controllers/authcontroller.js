@@ -9,7 +9,7 @@ async function register(req, res){
         let users = readFile();
 
       
-    if (!name || !email, !role || !password) {
+    if (!name || !email || !role || !password) {
         return res.status(400).json({message: "All fields are required"});
     }
     

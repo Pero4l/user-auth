@@ -11,7 +11,7 @@ async function loginMiddleware(req, res, next) {
 
     const isMatch = await bcrypt.compare(password, userExist.password)
 
-    if(!userExist && isMatch ){
+    if(!userExist && !isMatch ){
 
          res.status(401).json({
             success: false,
